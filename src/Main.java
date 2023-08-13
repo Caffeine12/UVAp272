@@ -1,30 +1,35 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) throws Exception 
     {
-        Scanner sc = new Scanner(System.in);
-        String input=sc.nextLine();
+        InputStreamReader in= new InputStreamReader(System.in);
+        BufferedReader br= new BufferedReader(in);
+        String input;
         int flag=0;
-        char[] ch=input.toCharArray();
-
-        for(char c:ch)
-        {
-            if(c=='"')
+        while((input=br.readLine())!=null)
+        {            
+            char[] ch=input.toCharArray();
+            for(char c:ch)
             {
-                if(flag==0)
+                if(c=='"')
                 {
-                    System.out.print("``");
-                    flag=1;
-                }
+                    if(flag==0)
+                    {
+                        System.out.print("``");
+                        flag=1;
+                    }
                 else
-               {   
+                {   
                     System.out.print("''");
                     flag=0;
                 }     
+                }
+                else
+                System.out.print(c);                         
             }
-            else
-            System.out.print(c);                         
-        }         
+            System.out.print("\n");
+        }              
     }
 }
